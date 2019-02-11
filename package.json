@@ -1,0 +1,22 @@
+{
+  "name": "habit-tracker",
+  "version": "0.1.0",
+  "description": "A gamified habit tracking app.",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asarav/Habit-Tracker.git"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Avinash Saravanan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asarav/Habit-Tracker/issues"
+  },
+  "homepage": "https://github.com/asarav/Habit-Tracker#readme",
+  "devDependencies": {
+    "electron": "^4.0.4"
+  }
+}
