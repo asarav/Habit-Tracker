@@ -7,6 +7,7 @@ To run the app, use the following
 * npm start
 
 To build the app, use the following based on your OS of choice
+
 Windows
 * npm run package-win
 
