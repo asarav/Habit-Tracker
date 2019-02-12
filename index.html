@@ -2,39 +2,52 @@
 <html>
     <head>
         <title>Habit Tracker</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="src/modules/sidebar-nav/css/sidebar-nav.css">
     </head>
     <body>
         <nav>
-            <div class="nav-wrapper">
-            <a class="brand-logo center">Shopping List</a>   
+            <div class="navbar navbar-expand-md">
+                <a class="navbar-brand">Shopping List</a>   
             </div>
         </nav>
-        <ul></ul>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-xs-3">
+                    hasdf
+                </nav>
+                <main class="col-xs-9" id="content">
+                    <a href="src/modules/other page/other page.html">Go to another page</a>
+                    <ul></ul>
+                        
+                    <script>
+                        const electron = require('electron');
+                        const {ipcRenderer} = electron;
+                        const ul = document.querySelector('ul');
+                        ipcRenderer.on('item:add', function(e, item){
+                            ul.className = 'collection';
+                            const li = document.createElement('li');
+                            li.className = 'collection-item';
+                            const itemText = document.createTextNode(item);
+                            li.appendChild(itemText);
+                            ul.appendChild(li);
+                        });
+                        ipcRenderer.on('item:clear', function(){
+                            ul.className = '';
+                            ul.innerHTML = '';
+                        });
+                        ul.addEventListener('dblclick', removeItem);
+                        function removeItem(e){
+                            event.target.remove();
+                            if(ul.children.length == 0){
+                                ul.className = '';
+                            }
+                        }
+                    </script>
+                </main>
+            </div>
+        </div>
 
-        <script>
-            const electron = require('electron');
-            const {ipcRenderer} = electron;
-            const ul = document.querySelector('ul');
-            ipcRenderer.on('item:add', function(e, item){
-            ul.className = 'collection';
-            const li = document.createElement('li');
-            li.className = 'collection-item';
-            const itemText = document.createTextNode(item);
-            li.appendChild(itemText);
-            ul.appendChild(li);
-            });
-            ipcRenderer.on('item:clear', function(){
-            ul.className = '';
-            ul.innerHTML = '';
-            });
-            ul.addEventListener('dblclick', removeItem);
-            function removeItem(e){
-            event.target.remove();
-            if(ul.children.length == 0){
-                ul.className = '';
-            }
-            }
-        </script>
+        <script type="text/javascript" src="src/modules/sidebar-nav/scripts/sidebar-nav.ts"></script>
     </body>
 </html>
