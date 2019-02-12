@@ -2,7 +2,7 @@
   "name": "habit-tracker",
   "version": "0.1.0",
   "description": "A gamified habit tracking app.",
-  "main": "main.js",
+  "main": "main.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asarav/Habit-Tracker.git"
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/asarav/Habit-Tracker#readme",
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "^4.0.4",
     "electron-packager": "^13.0.1"
   }
