@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+    <head>
+        <title>Habit Tracker</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+            <a class="brand-logo center">Shopping List</a>   
+            </div>
+        </nav>
+        <ul></ul>
+
+        <script>
+            const electron = require('electron');
+            const {ipcRenderer} = electron;
+            const ul = document.querySelector('ul');
+            ipcRenderer.on('item:add', function(e, item){
+            ul.className = 'collection';
+            const li = document.createElement('li');
+            li.className = 'collection-item';
+            const itemText = document.createTextNode(item);
+            li.appendChild(itemText);
+            ul.appendChild(li);
+            });
+            ipcRenderer.on('item:clear', function(){
+            ul.className = '';
+            ul.innerHTML = '';
+            });
+            ul.addEventListener('dblclick', removeItem);
+            function removeItem(e){
+            event.target.remove();
+            if(ul.children.length == 0){
+                ul.className = '';
+            }
+            }
+        </script>
+    </body>
 </html>
