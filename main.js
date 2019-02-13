@@ -13,7 +13,16 @@ let addWindow;
 // Listen for app to be ready
 app.on('ready', function(){
   // Create new window
-  mainWindow = new BrowserWindow({});
+  if(process.env.NODE_ENV !== 'production') {
+    mainWindow = new BrowserWindow({
+      frame: true
+    })
+  } else {
+    mainWindow = new BrowserWindow({
+      frame: false
+    });
+  }
+  
   // Load html in window
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

@@ -6,17 +6,38 @@
         <link rel="stylesheet" href="src/modules/sidebar-nav/css/sidebar-nav.css">
     </head>
     <body>
-        <nav>
-            <div class="navbar navbar-expand-md">
-                <a class="navbar-brand">Shopping List</a>   
-            </div>
+        <nav class="navbar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <span>Habit Tracker</span>
+                </li>
+                <li class="nav-item">
+                    <a id="devTools">Dev Tools</a>
+                </li>
+            </ul>
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <nav class="col-xs-3">
-                    hasdf
+                <nav class="col-2 col-sm-3">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Analytics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Export</a>
+                        </li>
+                    </ul>
                 </nav>
-                <main class="col-xs-9" id="content">
+                <main class="col-10 col-sm-9" id="content">
                     <a href="src/modules/other page/other page.html">Go to another page</a>
                     <ul></ul>
                         
@@ -48,6 +69,6 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="src/modules/sidebar-nav/scripts/sidebar-nav.ts"></script>
+        <script type="text/javascript" src="src/modules/sidebar-nav/scripts/sidebar-nav.js"></script>
     </body>
 </html>
