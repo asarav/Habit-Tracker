@@ -1,0 +1,13 @@
+.window-nav {
+    font-size: 18px;
+}
+
+.window-nav li {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.side-nav {
+    font-size: 12px;
+    font-weight: bold;
+}
