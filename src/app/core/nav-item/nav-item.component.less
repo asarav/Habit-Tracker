@@ -1,0 +1,17 @@
+.nav-item {
+    font-size: 12px;
+    font-weight: bold;
+    .nav-link {
+        cursor: pointer;
+        color: #007bff;
+        &:hover {
+            color: white;
+            background: #007bff;
+            transition: color 0.5s, background 0.5s;
+            transition-timing-function: ease-in-out;
+        }
+    }
+    .nav-link.active {
+        color: white;
+    }
+}

@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'nav-item',
   templateUrl: './nav-item.component.html',
-  styleUrls: ['./nav-item.component.less']
+  styleUrls: ['./nav-item.component.less'],
 })
 export class NavItemComponent implements OnInit {
+  @Input() route: string;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
 
+  changeNavigation() {
+    this.router.navigate([this.route]);
+  };
 }
