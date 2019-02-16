@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-goals-view',
+  selector: 'goals-view',
   templateUrl: './goals-view.component.html',
   styleUrls: ['./goals-view.component.less']
 })

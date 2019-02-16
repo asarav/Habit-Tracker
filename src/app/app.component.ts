@@ -8,10 +8,16 @@ import { Router } from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'habit-tracker';
+  route = 'profile';
 
   constructor(private router: Router) {}
 
   ngOnInit(){
-    this.router.navigate(['profile']);
+    this.router.navigate(['profile']);//Default to profile page on opening.
   }
+
+  changeNavigation(route) {
+    this.route = route;
+    this.router.navigate([route]);
+  };
 }

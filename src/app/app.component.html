@@ -21,17 +21,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <ul class="nav nav-pills flex-column">
+        <nav-item></nav-item>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="profile">My Character</a>
+          <span class="nav-link active" (click)="changeNavigation('profile')">My Character</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="goals">My Goals</a>
+          <span class="nav-link" (click)="changeNavigation('goals')">My Goals</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="quests">Quests</a>
+          <span class="nav-link" (click)="changeNavigation('quests')">Quests</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="achievements">Achievements</a>
+          <span class="nav-link" (click)="changeNavigation('achievements')">Achievements</span>
         </li>
       </ul>
     </nav>

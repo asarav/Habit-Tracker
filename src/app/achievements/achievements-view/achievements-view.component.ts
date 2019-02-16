@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-achievements-view',
+  selector: 'achievements-view',
   templateUrl: './achievements-view.component.html',
   styleUrls: ['./achievements-view.component.less']
 })
