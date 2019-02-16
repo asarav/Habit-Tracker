@@ -1,10 +1,14 @@
 # Habit-Tracker
+
 A Habit Tracking Electron App that uses React. Will be designed in a way that is similar to what is specified in Steve Kamb's Level Up Your Life
 
 # Commands
 
 To run the app, use the following
-* npm start
+* npm run electron
+
+To build then run the app, use the following
+* npm run electron-build
 
 To build the app, use the following based on your OS of choice
 
