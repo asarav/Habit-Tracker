@@ -1,7 +1,17 @@
 {
   "name": "habit-tracker",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "A gamified habit tracking app.",
+  "author": "Avinash Saravanan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asarav/Habit-Tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asarav/Habit-Tracker/issues"
+  },
+  "homepage": "https://github.com/asarav/Habit-Tracker#readme",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -11,7 +21,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "electron-build": "ng build --prod && electron .",
+    "package-mac": "electron-packager . --platform=darwin",
+    "package-win": "electron-packager . --platform=win32",
+    "package-linux": "electron-packager . --platform=linux"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +36,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
@@ -37,6 +51,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "devtron": "^1.4.0",
     "electron": "^4.0.5",
     "electron-packager": "^13.0.1",
     "jasmine-core": "~2.99.1",
