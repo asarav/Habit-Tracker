@@ -22,9 +22,9 @@
     "e2e": "ng e2e",
     "electron": "electron .",
     "electron-build": "ng build --prod && electron .",
-    "package-mac": "electron-packager . --platform=darwin",
-    "package-win": "electron-packager . --platform=win32",
-    "package-linux": "electron-packager . --platform=linux"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --prune=true --out=release-builds",
+    "package-win": "electron-packager . Habit-Tracker --overwrite --asar=true --platform=win32 --prune=true --out=release-builds",
+    "package-linux": "electron-packager . Habit-Tracker --overwrite --asar=true --platform=linux --prune=true --out=release-builds"
   },
   "private": true,
   "dependencies": {
