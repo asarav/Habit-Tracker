@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//remote = window.require('electron').remote;
+import { Remote } from 'electron';
 
 @Component({
   selector: 'top-nav',
@@ -8,15 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-nav.component.less']
 })
 export class TopNavComponent implements OnInit {
+  private remote: Remote | undefined;
 
-  constructor() {}
+  constructor() {
+    if (window.require) {
+      try {
+        this.remote = window.require('electron').remote;
+      } catch (e) {
+        throw e;
+      }
+    } else {
+      console.warn('Electron\'s Remote was not loaded');
+    }
+  }
 
   ngOnInit() {
   }
 
   close() {
-    // var window = remote.getCurrentWindow();
-    // window.close();
+    var window = this.remote.getCurrentWindow();
+    window.close();
   }
 
 }
