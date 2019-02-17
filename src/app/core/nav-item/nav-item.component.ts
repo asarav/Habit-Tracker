@@ -17,4 +17,16 @@ export class NavItemComponent implements OnInit {
   changeNavigation() {
     this.router.navigate([this.route]);
   };
+
+  isCurrentRoute() {
+    var newRoute = this.router.url;
+    if(newRoute[0] === '/') {
+      newRoute = newRoute.substring(1);
+    }
+    if(this.route === newRoute) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -1,3 +1,7 @@
+## [0.1.4]
+### Added
+- Sidebar Nav item component that handles its own active state.
+
 ## [0.1.3]
 ### Added
 - Add skeletons of modules and components for future development.
