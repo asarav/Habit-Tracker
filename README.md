@@ -30,6 +30,7 @@ Directive
 
 Pipe 
 * ng g pipe my-new-pipe
+
 Service
 * ng g service my-new-service
 

@@ -1,3 +1,10 @@
+## [0.1.5]
+### Added
+- electron-util services that can be used for accessing electron through angular.
+
+### Changed
+- Top nav into its own component.
+
 ## [0.1.4]
 ### Added
 - Sidebar Nav item component that handles its own active state.
