@@ -1,3 +1,10 @@
+## [0.1.6]
+### Added
+- Minimize and maximize buttons.
+
+### Changed
+- Removed standard menu frame and replaced with custom frame.
+
 ## [0.1.5]
 ### Added
 - electron-util services that can be used for accessing electron through angular.
