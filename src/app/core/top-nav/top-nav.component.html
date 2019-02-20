@@ -1,30 +1,30 @@
+<div class="title-section row">
+    <div class="title col-6 ">Habit Tracker</div>
+    <span class="menu-buttons col-6">
+        <span class="minimize menu-button" (click)="minimize()">
+          <span class="material-icons">minimize</span>
+        </span>
+        <span class="maximize menu-button" (click)="maximize()">
+          <span class="material-icons">crop_square</span>
+        </span>
+        <span class="close-button menu-button" (click)="close()">
+          <span class="material-icons">close</span>
+        </span>
+      </span>
+</div>
 <nav class="navbar">
   <ul class="nav window-nav">
-    <li class="nav-item">
-      <span>Habit Tracker</span>
-    </li>
     <li class="nav-item">
       <span id="saveData">Save Data</span>
     </li>
     <li class="nav-item">
-      <span id="options">Options</span>
+      <span id="options" (click)="gotoOptions()">Options</span>
     </li>
     <li class="nav-item">
       <span id="devTools" (click)="openDevTools()">Dev Tools</span>
     </li>
     <li class="nav-item">
-      <span id="help">Help</span>
+      <span id="help" (click)="gotoHelp()">Help</span>
     </li>
   </ul>
-  <span class="menu-buttons pull-right">
-    <span class="minimize menu-button" (click)="minimize()">
-      <span class="material-icons">minimize</span>
-    </span>
-    <span class="maximize menu-button" (click)="maximize()">
-      <span class="material-icons">crop_square</span>
-    </span>
-    <span class="close menu-button" (click)="close()">
-      <span class="material-icons">close</span>
-    </span>
-  </span>
 </nav>

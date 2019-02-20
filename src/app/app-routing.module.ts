@@ -4,6 +4,8 @@ import { GoalsViewComponent } from './goals/goals-view/goals-view.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { QuestsViewComponent } from './quests/quests-view/quests-view.component';
 import { AchievementsViewComponent } from './achievements/achievements-view/achievements-view.component';
+import { HelpViewComponent } from './help/help-view/help-view.component';
+import { OptionsViewComponent } from './options/options-view/options-view.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'achievements',
     component: AchievementsViewComponent
+  },
+  {
+    path: 'help',
+    component: HelpViewComponent
+  },
+  {
+    path: 'options',
+    component: OptionsViewComponent
   }
 ];
 

@@ -1,20 +1,22 @@
-.navbar {
-    -webkit-app-region: drag;
-    padding-right: 0px;
-    padding-left: 0px;
-    min-width: 541px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-    .window-nav {
-        font-size: 17px;
-        li {
-            margin-left: 10px;
-            margin-right: 10px;
-            cursor: pointer;
-            color: #007bff;
-        }
+.title-section {
+    margin-left: 0px;
+    margin-right: 0px;
+    background: rgb(103, 158, 221);
+    .title {
+        -webkit-app-region: drag;
+        font-size: 16px;
+        color: white;
+        padding-left: 10px;
     }
     .menu-buttons {
+        text-align: right;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-right: 5px;
         .menu-button {
             cursor: pointer;
             margin-right: 10px;
@@ -22,6 +24,28 @@
             .material-icons {
                 font-size: 16px;
                 line-height: 1.5;
+                color: white;
+            }
+        }
+    }
+}
+.navbar {
+    padding-right: 0px;
+    padding-left: 0px;
+    min-width: 541px;
+    padding-bottom: 1px;
+    padding-top: 0px;
+    .window-nav {
+        font-size: 16px;
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+            cursor: pointer;
+            color: #007bff;
+            &:hover {
+                background: #6ea8e6;
+                color: white;
+                transition: color 0.5s, background 0.5s;
             }
         }
     }

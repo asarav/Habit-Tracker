@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RemoteService } from 'src/app/electron-utils/remote.service';
 import { remote } from 'electron';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'top-nav',
@@ -11,8 +12,8 @@ export class TopNavComponent implements OnInit {
   remote = new RemoteService().remote;
   win = this.remote.getCurrentWindow();
 
-  constructor() {
-  }
+  constructor(private router: Router) {}
+
 
   ngOnInit() {
   }
@@ -34,6 +35,14 @@ export class TopNavComponent implements OnInit {
   close() {
     var window = this.remote.getCurrentWindow();
     window.close();
+  }
+
+  gotoHelp() {
+    this.router.navigate(['help']);
+  };
+
+  gotoOptions() {
+    this.router.navigate(['options']);
   }
 
 }
