@@ -1,3 +1,11 @@
+## [0.1.7]
+### Added
+- Options and Help modules and components.
+
+### Changed
+- Top nav to appropriately redirect to options and help modules.
+- Added draggable title area to top nav.
+
 ## [0.1.6]
 ### Added
 - Minimize and maximize buttons.
