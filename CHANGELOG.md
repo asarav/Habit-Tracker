@@ -1,3 +1,8 @@
+## [0.1.8]
+### Added
+- Storage of window size.
+- First instance of nedb storage.
+
 ## [0.1.7]
 ### Added
 - Options and Help modules and components.
