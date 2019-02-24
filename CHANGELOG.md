@@ -1,3 +1,7 @@
+## [0.1.9]
+### Added
+- Save event when user wants to save edited data after it has been loaded.
+
 ## [0.1.8]
 ### Added
 - Storage of window size.
