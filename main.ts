@@ -4,7 +4,7 @@ const DataStore = require('nedb')
 let win;
 
 function createWindow () {
-  var userSettingsData = new DataStore({ filename: 'userSettingsData', autoload: true });
+  var userSettingsData = new DataStore({ filename: 'userSettingsData.data', autoload: true });
   userSettingsData.findOne( { _id: 'window' }, function(err, data) {
     var userWindow = {
       width: 600,
@@ -23,8 +23,6 @@ function createWindow () {
     win.loadURL(`file://${__dirname}/dist/index.html`)
 
     win.on('resize', function () {
-      console.log(win.getSize()[0]);
-      console.log(win.getSize()[1]);
       userSettingsData.update({ _id: 'window'},
           { _id: 'window', data: { width: win.getSize()[0], height: win.getSize()[1] } },
           { upsert: true }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SaveNavService } from 'src/app/core/save-nav.service';
 
 @Component({
   selector: 'goals-view',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goals-view.component.less']
 })
 export class GoalsViewComponent implements OnInit {
-
-  constructor() { }
+  subscription:Subscription;
+  
+  constructor(private saveNavService: SaveNavService) {
+  }
 
   ngOnInit() {
+    this.subscription = this.saveNavService.saveItem$
+       .subscribe(data => {
+         console.log(data);
+       });
+  }
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
   }
 
 }

@@ -40,6 +40,7 @@ testem.log
 /typings
 
 # user data
+*.data
 
 # System Files
 .DS_Store

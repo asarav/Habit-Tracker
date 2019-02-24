@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RemoteService } from 'src/app/electron-utils/remote.service';
-import { remote } from 'electron';
 import { Router } from '@angular/router';
+import { SaveNavService } from '../save-nav.service';
 
 @Component({
   selector: 'top-nav',
@@ -12,7 +12,7 @@ export class TopNavComponent implements OnInit {
   remote = new RemoteService().remote;
   win = this.remote.getCurrentWindow();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private saveNavService:SaveNavService) {}
 
 
   ngOnInit() {
@@ -20,6 +20,10 @@ export class TopNavComponent implements OnInit {
 
   openDevTools() {
     this.win.webContents.openDevTools();
+  }
+
+  save() {
+    this.saveNavService.saveData('saving');
   }
 
   minimize() {
