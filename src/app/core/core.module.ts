@@ -6,11 +6,11 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 @NgModule({
   declarations: [NavItemComponent, TopNavComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     NavItemComponent,
-    TopNavComponent
+    TopNavComponent,
   ]
 })
 export class CoreModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SaveNavService } from 'src/app/core/save-nav.service';
-const os = require('os');
+import { DataStoreService } from 'src/app/core/data-store.service';
 
 @Component({
   selector: 'goals-view',
@@ -11,12 +11,9 @@ const os = require('os');
 export class GoalsViewComponent implements OnInit {
   subscription:Subscription;
   goalsData = '';//Text
-  storage;
 
-  constructor(private saveNavService: SaveNavService) {
-    this.storage = window.localStorage;
+  constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.goalsData = this.storage.getItem('goals');
-    console.log(this.storage);
   }
 
   ngOnInit() {
@@ -32,8 +29,7 @@ export class GoalsViewComponent implements OnInit {
   }
 
   saveData() {
-    this.storage.setItem('goals', this.goalsData);
-    console.log(this.storage);
+    this.storage.saveItem('goals', this.goalsData)
   }
 
 }
