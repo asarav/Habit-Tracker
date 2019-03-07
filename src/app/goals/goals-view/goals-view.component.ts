@@ -10,10 +10,11 @@ import { DataStoreService } from 'src/app/core/data-store.service';
 })
 export class GoalsViewComponent implements OnInit {
   subscription:Subscription;
-  goalsData = '';//Text
+  goalsData;
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.goalsData = this.storage.getItem('goals');
+    console.log(this.goalsData);
   }
 
   ngOnInit() {
@@ -30,6 +31,25 @@ export class GoalsViewComponent implements OnInit {
 
   saveData() {
     this.storage.saveItem('goals', this.goalsData)
+  }
+
+  addGoal() {
+    if(!this.goalsData.goals) {
+      this.goalsData.goals = [];
+    }
+    if(!this.goalsData.goalsCount) {
+      this.goalsData.goalsCount = 0;
+    }
+
+    this.goalsData.goalsCount++;
+
+    this.goalsData.goals.push({
+      content: '',
+      dateOfCreation: new Date(),
+      completed: false,
+      guild: '',
+      goalNumber: this.goalsData.goalsCount
+    });
   }
 
 }

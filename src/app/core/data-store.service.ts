@@ -17,7 +17,6 @@ export class DataStoreService {
     try {
       return JSON.parse(item);
     } catch(e) {
-      console.log(e);
       return item;
     }
   }
