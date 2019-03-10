@@ -1,14 +1,11 @@
-<p>
-  goals-view works!
-</p>
-<div class="row" *ngFor="let row of goalsData.goals; let i = index;">
+<div class="row" *ngFor="let goal of goalsData.goals; let i = index;">
   <div class="col-6">
-    <input class="form-control" type="text" [(ngModel)]="goalsData.goals[i].content">
+    <input class="form-control" type="text" [(ngModel)]="goal.content">
   </div>
-  <!-- <div class="col-6 form-check">
-      <input type="checkbox" class="form-check-input" id="completed" [(ngModel)]="goalsData.goals[i].completed">
-      <label class="form-check-label" for="completed{i}">Completed</label>
-  </div> -->
+  <div class="col-6 form-check">
+      <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed">
+      <label class="form-check-label" for="{{'completed' + i }}">Completed</label>
+  </div>
 </div>
 <div class="row">
   <button class="btn btn-primary" (click)="addGoal()">Add New Goal</button>
