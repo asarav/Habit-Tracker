@@ -52,4 +52,8 @@ export class GoalsViewComponent implements OnInit {
     });
   }
 
+  removeGoal(index) {
+    this.goalsData.goals.splice(index, 1)
+  }
+
 }
