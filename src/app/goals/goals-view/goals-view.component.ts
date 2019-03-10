@@ -14,7 +14,13 @@ export class GoalsViewComponent implements OnInit {
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.goalsData = this.storage.getItem('goals');
-    console.log(this.goalsData);
+    if(!this.goalsData) {
+      this.goalsData = {};
+    }
+    if(!this.goalsData.goals || this.goalsData.goals.length <= 0) {
+      this.addGoal();
+      this.addSubGoal(0);
+    }
   }
 
   ngOnInit() {
@@ -48,12 +54,40 @@ export class GoalsViewComponent implements OnInit {
       dateOfCreation: new Date(),
       completed: false,
       guild: '',
-      goalNumber: this.goalsData.goalsCount
+      goalNumber: this.goalsData.goalsCount,
+      subGoalsCount: 1,
+      subGoalsData: []
     });
   }
 
   removeGoal(index) {
+    this.goalsData.goalsCount--;
     this.goalsData.goals.splice(index, 1)
+  }
+
+  addSubGoal(index) {
+    if(this.goalsData.goals[index].subGoalsCount) {
+      this.goalsData.goals[index].subGoalsCount++;
+    } else {
+      this.goalsData.goals[index].subGoalsCount = 1;
+      this.goalsData.goals[index].subGoalsData = [];
+    }
+
+    this.goalsData.goals[index].subGoalsData.push({
+      content: '',
+      dateOfCreation: new Date(),
+      completed: false,
+      subGoalNumber: this.goalsData.goals[index].subGoalsCount
+    });
+  }
+
+  removeSubGoal(goalIndex, subGoalIndex) {
+    this.goalsData.goals[goalIndex].subGoalsCount--;
+    this.goalsData.goals[goalIndex].splice(subGoalIndex, 1);
+  }
+
+  getLetterFromNumber(number) {
+    return String.fromCharCode(97 + number);
   }
 
 }

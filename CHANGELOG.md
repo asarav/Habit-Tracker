@@ -1,3 +1,9 @@
+## [0.1.10]
+### Added
+- Ability to enter goal data.
+- Ability to enter subgoals under goals.
+- Ability to remove subgoals and goals.
+
 ## [0.1.9]
 ### Added
 - Save event when user wants to save edited data after it has been loaded.
