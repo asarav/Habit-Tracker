@@ -1,36 +1,38 @@
-<div *ngFor="let goal of goalsData.goals; let i = index;">
-  <div class="row">
-    <div class="col-1">{{i+1}}.) </div>
-    <div class="col-6">
-      <input class="form-control" type="text" [(ngModel)]="goal.content">
-    </div>
-    <div class="col-3 form-check">
-        <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed">
-        <label class="form-check-label" for="{{'completed' + i }}">Completed</label>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-primary" (click)="removeGoal(i)">Remove</button>
-    </div>
-  </div>
-  <div *ngFor="let subGoal of goal.subGoalsData; let j = index;">
-      <div class="row">
-        <div class="offset-1 col-1">{{getLetterFromNumber(j)}}.)</div>
-        <div class="col-5">
-            <input class="form-control" type="text" [(ngModel)]="subGoal.content">
-        </div>
-        <div class="col-3 form-check">
-            <input type="checkbox" class="form-check-input" id="{{ 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed">
-            <label class="form-check-label" for="{{'subGoalCompleted' + j }}">Completed</label>
-        </div>
-        <div class="col-2">
-          <button class="btn btn-primary" (click)="removeSubGoal(i, j)">Remove</button>
-        </div>
+<div class="goals-view">
+  <div *ngFor="let goal of goalsData.goals; let i = index;">
+    <div class="row goal-row">
+      <div class="col-1">{{i+1}}.) </div>
+      <div class="col-7">
+        <input class="form-control" type="text" [(ngModel)]="goal.content">
       </div>
+      <div class="col-2 form-check">
+          <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed">
+          <label class="form-check-label" for="{{'completed' + i }}">Completed</label>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-danger btn-sm" (click)="removeGoal(i)">Remove</button>
+      </div>
+    </div>
+    <div *ngFor="let subGoal of goal.subGoalsData; let j = index;">
+        <div class="row goal-row">
+          <div class="offset-1 col-1">{{getLetterFromNumber(j)}}.)</div>
+          <div class="col-6">
+              <input class="form-control" type="text" [(ngModel)]="subGoal.content">
+          </div>
+          <div class="col-2 form-check">
+              <input type="checkbox" class="form-check-input" id="{{ 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed">
+              <label class="form-check-label" for="{{'subGoalCompleted' + j }}">Completed</label>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-danger btn-sm" (click)="removeSubGoal(i, j)">Remove</button>
+          </div>
+        </div>
+    </div>
+    <div class="row sub-goal-button-row button-row">
+      <button class="btn btn-secondary btn-sm" (click)="addSubGoal(i)">Add New Sub Goal</button>
+    </div>
   </div>
-  <div class="row sub-goal-button-row">
-    <button class="btn btn-primary" (click)="addSubGoal(i)">Add New Sub Goal</button>
+  <div class="row button-row">
+    <button class="btn btn-primary btn-sm" (click)="addGoal()">Add New Goal</button>
   </div>
-</div>
-<div class="row">
-  <button class="btn btn-primary" (click)="addGoal()">Add New Goal</button>
 </div>
