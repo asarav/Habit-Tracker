@@ -11,6 +11,7 @@ import { DataStoreService } from 'src/app/core/data-store.service';
 export class GoalsViewComponent implements OnInit {
   subscription:Subscription;
   goalsData;
+  edit = false;
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.goalsData = this.storage.getItem('goals');
@@ -18,6 +19,7 @@ export class GoalsViewComponent implements OnInit {
       this.goalsData = {};
     }
     if(!this.goalsData.goals || this.goalsData.goals.length <= 0) {
+      this.edit = true;
       this.addGoal();
       this.addSubGoal(0);
     }
@@ -88,6 +90,13 @@ export class GoalsViewComponent implements OnInit {
 
   getLetterFromNumber(number) {
     return String.fromCharCode(97 + number);
+  }
+
+  toggleEdit() {
+    this.edit = !this.edit;
+    if(!this.edit) {
+      this.saveData();
+    }
   }
 
 }

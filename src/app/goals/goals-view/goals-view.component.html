@@ -2,37 +2,40 @@
   <div *ngFor="let goal of goalsData.goals; let i = index;">
     <div class="row goal-row">
       <div class="col-1">{{i+1}}.) </div>
-      <div class="col-7">
-        <input class="form-control" type="text" [(ngModel)]="goal.content">
+      <div [ngClass]="edit ? 'col-7' : 'col-9'">
+        <input [ngClass]="edit ? 'form-control' : 'form-control-plaintext goal-content'" type="text" [(ngModel)]="goal.content" [readonly]="!edit">
       </div>
       <div class="col-2 form-check">
-          <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed">
+          <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed" [disabled]="!edit">
           <label class="form-check-label" for="{{'completed' + i }}">Completed</label>
       </div>
-      <div class="col-2">
+      <div class="col-2" *ngIf="edit">
         <button class="btn btn-danger btn-sm" (click)="removeGoal(i)">Remove</button>
       </div>
     </div>
     <div *ngFor="let subGoal of goal.subGoalsData; let j = index;">
         <div class="row goal-row">
           <div class="offset-1 col-1">{{getLetterFromNumber(j)}}.)</div>
-          <div class="col-6">
-              <input class="form-control" type="text" [(ngModel)]="subGoal.content">
+          <div [ngClass]="edit ? 'col-6' : 'col-8'">
+              <input [ngClass]="edit ? 'form-control' : 'form-control-plaintext'" type="text" [(ngModel)]="subGoal.content" [readonly]="!edit">
           </div>
           <div class="col-2 form-check">
-              <input type="checkbox" class="form-check-input" id="{{ 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed">
+              <input type="checkbox" class="form-check-input" id="{{ 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed" [disabled]="!edit">
               <label class="form-check-label" for="{{'subGoalCompleted' + j }}">Completed</label>
           </div>
-          <div class="col-2">
+          <div class="col-2" *ngIf="edit">
             <button class="btn btn-danger btn-sm" (click)="removeSubGoal(i, j)">Remove</button>
           </div>
         </div>
     </div>
-    <div class="row sub-goal-button-row button-row">
+    <div class="row sub-goal-button-row button-row" *ngIf="edit">
       <button class="btn btn-secondary btn-sm" (click)="addSubGoal(i)">Add New Sub Goal</button>
     </div>
   </div>
-  <div class="row button-row">
+  <div class="row button-row" *ngIf="edit">
     <button class="btn btn-primary btn-sm" (click)="addGoal()">Add New Goal</button>
+  </div>
+  <div class="row button-row pull-right">
+    <button class="btn btn-primary btn-sm" (click)="toggleEdit()">{{ edit ? 'Done' : 'Edit' }}</button>
   </div>
 </div>

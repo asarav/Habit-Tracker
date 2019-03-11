@@ -1,3 +1,8 @@
+## [0.1.11]
+### Added
+- Edit and view states for goals.
+- Level calculation service files.
+
 ## [0.1.10]
 ### Added
 - Ability to enter goal data.
