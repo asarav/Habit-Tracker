@@ -12,6 +12,7 @@ export class GoalsViewComponent implements OnInit {
   subscription:Subscription;
   goalsData;
   edit = false;
+  formInvalid = false;
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.goalsData = this.storage.getItem('goals');
@@ -85,7 +86,7 @@ export class GoalsViewComponent implements OnInit {
 
   removeSubGoal(goalIndex, subGoalIndex) {
     this.goalsData.goals[goalIndex].subGoalsCount--;
-    this.goalsData.goals[goalIndex].splice(subGoalIndex, 1);
+    this.goalsData.goals[goalIndex].subGoalsData.splice(subGoalIndex, 1);
   }
 
   getLetterFromNumber(number) {
@@ -93,10 +94,31 @@ export class GoalsViewComponent implements OnInit {
   }
 
   toggleEdit() {
-    this.edit = !this.edit;
-    if(!this.edit) {
-      this.saveData();
+    if(this.edit && this.validateForm()) {
+      //Show error if invalid on edit
+      this.formInvalid = true;
+    } else{
+      this.formInvalid = false;
+      this.edit = !this.edit;
+      if(!this.edit) {
+        this.saveData();
+      }
     }
   }
 
+  //Returns false if vald. True if invalid.
+  validateForm() {
+    for(var i = 0; i < this.goalsData.goals.length; i++) {
+      if(!this.goalsData.goals[i].content) {
+        return true;
+      } else {
+        for(var j = 0; j < this.goalsData.goals[i].subGoalsData.length; j++) {
+          if(!this.goalsData.goals[i].subGoalsData[j].content) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
 }

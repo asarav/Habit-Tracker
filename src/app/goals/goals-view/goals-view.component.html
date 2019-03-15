@@ -35,6 +35,7 @@
   <div class="row button-row" *ngIf="edit">
     <button class="btn btn-primary btn-sm" (click)="addGoal()">Add New Goal</button>
   </div>
+  <div class="row alert alert-danger" role="alert" *ngIf="formInvalid">All empty rows must either be filled or removed.</div>
   <div class="row button-row pull-right">
     <button class="btn btn-primary btn-sm" (click)="toggleEdit()">{{ edit ? 'Done' : 'Edit' }}</button>
   </div>

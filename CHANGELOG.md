@@ -1,3 +1,7 @@
+## [0.1.12]
+### Added
+- Validations for goals.
+
 ## [0.1.11]
 ### Added
 - Edit and view states for goals.
