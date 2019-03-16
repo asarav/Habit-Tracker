@@ -1,3 +1,11 @@
+## [0.1.13]
+### Added
+- Basic html for profile-view
+
+### Changed
+- Sidebar styling
+- Remove hidden toggle button for sidebar.
+
 ## [0.1.12]
 ### Added
 - Validations for goals.

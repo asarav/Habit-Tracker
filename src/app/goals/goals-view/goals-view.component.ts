@@ -124,6 +124,7 @@ export class GoalsViewComponent implements OnInit {
 
   checkboxChanged(goalIndex) {
     //Checkboxes should be the only changeable aspect of the UI in view mode.
+    //TODO: Do not allow for goals to be marked as completed if subgoals are not marked as completed.
     if(!this.edit) {
       this.saveData();
     }
