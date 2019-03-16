@@ -6,7 +6,7 @@
         <input [ngClass]="edit ? 'form-control' : 'form-control-plaintext goal-content'" type="text" [(ngModel)]="goal.content" [readonly]="!edit">
       </div>
       <div class="col-2 form-check">
-          <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed" [disabled]="!edit">
+          <input type="checkbox" class="form-check-input" id="{{ 'completed' + i }}" [(ngModel)]="goal.completed" (change)="checkboxChanged(i)">
           <label class="form-check-label" for="{{'completed' + i }}">Completed</label>
       </div>
       <div class="col-2" *ngIf="edit">
@@ -20,8 +20,8 @@
               <input [ngClass]="edit ? 'form-control' : 'form-control-plaintext'" type="text" [(ngModel)]="subGoal.content" [readonly]="!edit">
           </div>
           <div class="col-2 form-check">
-              <input type="checkbox" class="form-check-input" id="{{ 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed" [disabled]="!edit">
-              <label class="form-check-label" for="{{'subGoalCompleted' + j }}">Completed</label>
+              <input type="checkbox" class="form-check-input" id="{{ i + 'subGoalCompleted' + j }}" [(ngModel)]="subGoal.completed" (change)="checkboxChanged()">
+              <label class="form-check-label" for="{{ i + 'subGoalCompleted' + j }}">Completed</label>
           </div>
           <div class="col-2" *ngIf="edit">
             <button class="btn btn-danger btn-sm" (click)="removeSubGoal(i, j)">Remove</button>
