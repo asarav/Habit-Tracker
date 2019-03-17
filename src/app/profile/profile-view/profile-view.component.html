@@ -1,9 +1,14 @@
 <div class="profile-view">
-  <div class="row">
-    <label for="pic">Upload Profile Image</label>
-  </div>
-  <div class="row">
-    <input type="file" name="pic" accept="image/*">
+  <div class="upload-image-section">
+      <div class="row" *ngIf="imgURL">
+          <img id="blah" [src]="imgURL" alt="your image" height="200" />
+        </div>
+        <div class="row" *ngIf="!imgURL">
+          <label for="pic">Upload Profile Image</label>
+        </div>
+        <div class="row">
+          <input #file type="file" name="pic" accept="image/*" (change)="imageUploaded(file.files)">
+        </div>
   </div>
   <div class="row">
     <label>Class</label>
@@ -12,11 +17,17 @@
     <input type="text">
   </div>
   <div class="row">
-    <label>Background</label>
+      <label>Abilities</label>
   </div>
   <div class="row">
     <textarea rows="4" cols="50"></textarea>
   </div> 
+  <div class="row">
+    <label>Background</label>
+  </div>
+  <div class="row">
+    <textarea rows="4" cols="50"></textarea>
+  </div>
   <div class="row button-row pull-right">
     <button class="btn btn-primary btn-sm">{{ 'Edit' }}</button>
   </div>
