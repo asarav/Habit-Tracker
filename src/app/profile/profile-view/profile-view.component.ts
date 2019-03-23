@@ -9,6 +9,8 @@ export class ProfileViewComponent implements OnInit {
   private imageMessage;
   private imagePath;
   imgURL;
+  edit = false;
+  formInvalid = false;
 
   constructor() { }
 
@@ -31,6 +33,28 @@ export class ProfileViewComponent implements OnInit {
     reader.onload = (_event) => { 
       this.imgURL = reader.result; 
     }
+  }
+
+  toggleEdit() {
+    if(this.edit && this.validateForm()) {
+      //Show error if invalid on edit
+      this.formInvalid = true;
+    } else{
+      this.formInvalid = false;
+      this.edit = !this.edit;
+      if(!this.edit) {
+        this.saveData();
+      }
+    }
+  }
+
+  validateForm() {
+    //TODO
+    return false;
+  }
+
+  saveData() {
+    //TODO
   }
 
 }

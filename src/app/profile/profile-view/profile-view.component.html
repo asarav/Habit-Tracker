@@ -17,6 +17,9 @@
         </div>
   </div>
   <div class="row">
+    <label>Current Level: </label><label>10</label>
+  </div>
+  <div class="row">
     <label>Class</label>
   </div>
   <div class="row">
@@ -34,7 +37,16 @@
   <div class="row">
     <textarea rows="4" cols="50"></textarea>
   </div>
+  <div class="row">
+    <label>Goals Completed: </label><label>10</label>
+  </div>
+  <div class="row">
+    <label>Total Goals: </label><label>100</label>
+  </div>
+  <div class="row">
+    <label>Current Quests</label>
+  </div>
   <div class="row button-row pull-right">
-    <button class="btn btn-primary btn-sm">{{ 'Edit' }}</button>
+    <button class="btn btn-primary btn-sm" (click)="toggleEdit()">{{ edit ? 'Done' : 'Edit' }}</button>
   </div>
 </div>
