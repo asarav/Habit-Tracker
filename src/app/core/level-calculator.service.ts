@@ -38,6 +38,38 @@ export class LevelCalculatorService {
       } else {
         //The number of subdivisions will be the closest square root subtracting 6. These subdivisions represent the number of goals allocated to each set of levels.
         //The first set will require 1 goal per level. The next will be 2 and so on.
+        var subdivisionCount = Math.floor(Math.sqrt(goalCount));
+
+        var totalGoals = goalCount;
+
+        var subdivisions = [];
+
+        while(totalGoals > 0) {
+          if(totalGoals - subdivisionCount > 0) {
+            subdivisions.push(subdivisionCount);
+          } else {
+            if(totalGoals <= 3) {
+              if(subdivisions.length > 0) {
+                subdivisions[0] += totalGoals;
+                totalGoals = 0;
+              } else {
+                subdivisions.push(totalGoals);
+                totalGoals = 0;
+              }
+            } else {
+              var levelOne = Math.floor(totalGoals * (2/3));
+              var levelTwo = totalGoals - levelOne;
+
+              if(subdivisions.length > 1) {
+                subdivisions[0] += levelOne;
+                subdivisions[1] += levelTwo;
+              } else {
+                subdivisions.push(levelOne);
+                subdivisions.push(levelTwo);
+              }
+            }
+          }
+        }
 
         //Any remainders will be added to the first and second sets depending on whether they are even or odd.
       }
