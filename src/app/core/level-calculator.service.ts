@@ -19,6 +19,7 @@ export class LevelCalculatorService {
   calculateLevelData(data) {
     var goalCount = 0;
     var completedGoalCount = 0;
+    var maxLevel = 0;
     data.goals.array.forEach(goal => {
       goalCount++;
       if(goal.completed) {
@@ -30,15 +31,16 @@ export class LevelCalculatorService {
           completedGoalCount++;
         }
       });
+
+      //For now, require for there to be at least 100 goals and subgoals. Anything lower will have the number of levels equal the number of goals
+      if(goalCount < 100) {
+        maxLevel = 0;
+      } else {
+        //The number of subdivisions will be the closest square root subtracting 6. These subdivisions represent the number of goals allocated to each set of levels.
+        //The first set will require 1 goal per level. The next will be 2 and so on.
+
+        //Any remainders will be added to the first and second sets depending on whether they are even or odd.
+      }
     });
-
-    //TODO: Calculate level breakdown to determine max number of levels.
-    //Levels will require more completed goals as levels increase. We plan on using a series of exponential figures starting at 3^1.8 if the number of goals is above 50.
-    //We will use an exponent of 1.5 for lower amounts.
-    //E.g., total goals = 3^1.8 + 4^1.8 + 5^1.8 + ...
-    //experience count 1 will use 3^1.8 and so on. Initially it will be easier to level up because the experience count requirement is lower.
-    //However, difficulty will rise as experience count increases.
-
-    //https://gamedev.stackexchange.com/questions/13638/algorithm-for-dynamically-calculating-a-level-based-on-experience-points
   }
 }
