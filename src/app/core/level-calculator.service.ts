@@ -72,12 +72,38 @@ export class LevelCalculatorService {
         }
 
         //Any remainders will be added to the first and second sets depending on whether they are even or odd.
+        var evenCount = 0;
+        var oddCount = 0;
+
         for(var i = 1; i < subdivisions.length; i++) {
-          if(subdivisions[i] % i > 0) {
-            var remainder = subdivisions[i] % i;
+          if(subdivisions[i] % (i+1) > 0) {
+            var remainder = subdivisions[i] % (i+1);
+            subdivisions[i] -= remainder;
+            while(remainder > 0) {
+              //Try to make the number of levels split between the two relatively even.
+              if(evenCount < oddCount) {
+                if(remainder >= 2) {
+                  remainder -= 2;
+                  evenCount++;
+                } else {
+                  remainder -= 1;
+                  oddCount++;
+                }
+              } else {
+                remainder -= 1;
+                oddCount++;
+              }
+            }
+
+            //TODO: We may need to handle an edge case where the number of goals is the remainder.
+            //This is pretty unlikely because of the high number of goals, but it is possible.
           }
         }
 
+        //Count levels
+        for(var i = 0; i < subdivisions.length; i++) {
+          maxLevel += subdivisions[i]/(i+1);
+        }
       }
     });
   }
