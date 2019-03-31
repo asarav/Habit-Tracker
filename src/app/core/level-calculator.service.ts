@@ -32,17 +32,18 @@ export class LevelCalculatorService {
         }
       });
 
+      var subdivisions = [];
+
       //For now, require for there to be at least 100 goals and subgoals. Anything lower will have the number of levels equal the number of goals
       if(goalCount < 100) {
-        maxLevel = 0;
+        maxLevel = goalCount;
+        subdivisions.push(maxLevel);
       } else {
         //The number of subdivisions will be the closest square root subtracting 6. These subdivisions represent the number of goals allocated to each set of levels.
         //The first set will require 1 goal per level. The next will be 2 and so on.
         var subdivisionCount = Math.floor(Math.sqrt(goalCount)) - 6;
 
         var totalGoals = goalCount;
-
-        var subdivisions = [];
 
         while(totalGoals > 0) {
           if(totalGoals - subdivisionCount > 0) {
@@ -103,6 +104,18 @@ export class LevelCalculatorService {
         //Count levels
         for(var i = 0; i < subdivisions.length; i++) {
           maxLevel += subdivisions[i]/(i+1);
+        }
+      }
+
+      var tempCompletedGoalsCount = completedGoalCount;
+      //Get current level
+      for(var i = 0; i < subdivisions.length && tempCompletedGoalsCount > 0; i++) {
+        if(subdivisions[i] < tempCompletedGoalsCount) {
+          tempCompletedGoalsCount -= subdivisions[i];
+          this.currentLevel += subdivisions[i]/(i+1);
+        } else {
+          this.currentLevel += Math.floor(subdivisions[i]/(i+1));
+          tempCompletedGoalsCount = 0;
         }
       }
     });
