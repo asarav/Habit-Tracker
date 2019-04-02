@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SaveNavService } from 'src/app/core/save-nav.service';
 import { DataStoreService } from 'src/app/core/data-store.service';
+import { LevelCalculatorService } from 'src/app/core/level-calculator.service';
 
 @Component({
   selector: 'goals-view',
@@ -13,8 +14,10 @@ export class GoalsViewComponent implements OnInit {
   goalsData;
   edit = false;
   formInvalid = false;
+  currentLevel = 0;
+  maxLevel = 0;
 
-  constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
+  constructor(private saveNavService: SaveNavService, private storage: DataStoreService, private levelCalculator: LevelCalculatorService) {
     this.goalsData = this.storage.getItem('goals');
     if(!this.goalsData) {
       this.goalsData = {};
@@ -24,6 +27,7 @@ export class GoalsViewComponent implements OnInit {
       this.addGoal();
       this.addSubGoal(0);
     }
+    this.setLevelData();
   }
 
   ngOnInit() {
@@ -39,7 +43,8 @@ export class GoalsViewComponent implements OnInit {
   }
 
   saveData() {
-    this.storage.saveItem('goals', this.goalsData)
+    this.storage.saveItem('goals', this.goalsData);
+    this.setLevelData();
   }
 
   addGoal() {
@@ -128,5 +133,10 @@ export class GoalsViewComponent implements OnInit {
     if(!this.edit) {
       this.saveData();
     }
+  }
+
+  setLevelData() {
+    this.currentLevel = this.levelCalculator.getLevelData().currentLevel;
+    this.maxLevel = this.levelCalculator.getLevelData().maxLevel;
   }
 }
