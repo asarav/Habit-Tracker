@@ -1,3 +1,7 @@
+## [0.1.14]
+### Added
+- Completed Level Calculation Logic
+
 ## [0.1.13]
 ### Added
 - Basic html for profile-view
