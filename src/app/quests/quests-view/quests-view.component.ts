@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SaveNavService } from 'src/app/core/save-nav.service';
+import { DataStoreService } from 'src/app/core/data-store.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'quests-view',
@@ -15,7 +18,15 @@ export class QuestsViewComponent implements OnInit {
     { code: 'ME', name: 'Merchants Guild' }
   ];
 
-  constructor() { }
+  subscription:Subscription;
+  questsData;
+
+  constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
+    this.questsData = this.storage.getItem('quests');
+    if(!this.questsData) {
+      this.questsData = {};
+    }
+  }
 
   ngOnInit() {
   }

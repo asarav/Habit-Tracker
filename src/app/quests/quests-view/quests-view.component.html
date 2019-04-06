@@ -1,5 +1,8 @@
 <div class="quests-view">
   <h5>Guild Rank</h5>
+  <div class="guild-rank" *ngFor="let guild of guilds; let i = index;">
+    <label class="guild-name">{{ guild.name }}</label><label class="guild-code">({{ guild.code }}): </label>
+  </div>
   <h5>Current Quests</h5>
   <h5>Pending Quests</h5>
   <div class="row button-row pull-right">
