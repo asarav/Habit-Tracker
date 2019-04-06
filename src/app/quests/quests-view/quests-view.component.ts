@@ -29,6 +29,19 @@ export class QuestsViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.subscription = this.saveNavService.saveItem$
+       .subscribe(subscriptionData => {
+         this.saveData();
+       });
+  }
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.saveData();
+    this.subscription.unsubscribe();
+  }
+
+  saveData() {
+    this.storage.saveItem('quests', this.questsData);
   }
 
 }
