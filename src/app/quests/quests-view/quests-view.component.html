@@ -1,17 +1,17 @@
 <div class="quests-view">
   <h5>Guild Rank</h5>
-  <div class="guild-rank" *ngFor="let guild of guilds; let i = index;">
+  <div class="guild-rank row" *ngFor="let guild of guilds; let i = index;">
     <label class="guild-name">{{ guild.name }}</label><label class="guild-code">({{ guild.code }}): </label>
   </div>
   <h5>Current Quests</h5>
-  <!-- <div class="current-quests row" *ngFor="let quest of questsData.currentQuests; let i = index;">
-  </div> -->
+  <div class="current-quests row" *ngFor="let quest of questsData.currentQuests; let i = index;">
+  </div>
   <h5>Pending Quests</h5>
-  <!-- <div class="guild-rank row" *ngFor="let guild of guilds; let i = index;">
+  <div class="guild-rank row" *ngFor="let guild of guilds; let i = index;">
     <label class="guild-name">{{ guild.name }}</label>
-    <div current-quests *ngFor="let quest of questsData.pendingQuests[guild.name]; let j = index;">
+    <div current-quests *ngFor="let quest of questsData.pendingQuests[guild.code]; let j = index;">
     </div>
-  </div> -->
+  </div>
   <div class="row button-row pull-right">
     <button class="btn btn-primary btn-sm">{{ 'Edit' }}</button>
   </div>

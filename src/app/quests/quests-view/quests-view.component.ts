@@ -20,11 +20,22 @@ export class QuestsViewComponent implements OnInit {
 
   subscription:Subscription;
   questsData;
+  edit = false;
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.questsData = this.storage.getItem('quests');
     if(!this.questsData) {
       this.questsData = {};
+    }
+    if(!this.questsData.currentQuests || this.questsData.currentQuests.length <= 0) {
+      this.questsData.currentQuests = [];
+    }
+    if(!this.questsData.pendingQuests) {
+      this.questsData.pendingQuests = {};
+      //Populate pendingQuests section
+      this.guilds.forEach(function(guild) {
+        this.questsData.pendingQuests[String(guild.code)] = [];
+      });
     }
   }
 
