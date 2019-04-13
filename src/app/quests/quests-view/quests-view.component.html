@@ -10,6 +10,16 @@
   <div class="guild-rank row" *ngFor="let guild of guilds; let i = index;">
     <label class="guild-name">{{ guild.name }}</label>
     <div current-quests *ngFor="let quest of questsData.pendingQuests[guild.code]; let j = index;">
+      <input type="text" id="description">
+      <select>
+          <option value="AD">Adventurers Guild</option>
+          <option value="AR">Artists Guild</option>
+          <option value="AS">Assassins Guild</option>
+          <option value="BA">Bards Guild</option>
+          <option value="GE">Gentlemen's Guild</option>
+          <option value="MA">Mages Guild</option>
+          <option value="ME">Merchants Guild</option>
+        </select> 
     </div>
   </div>
   <div class="row button-row pull-right">
