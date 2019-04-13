@@ -21,6 +21,7 @@ export class QuestsViewComponent implements OnInit {
   subscription:Subscription;
   questsData;
   edit = false;
+  formInvalid = false;
 
   constructor(private saveNavService: SaveNavService, private storage: DataStoreService) {
     this.questsData = this.storage.getItem('quests');
@@ -53,6 +54,23 @@ export class QuestsViewComponent implements OnInit {
 
   saveData() {
     this.storage.saveItem('quests', this.questsData);
+  }
+
+  validateForm() {
+    return false;
+  }
+
+  toggleEdit() {
+    if(this.edit && this.validateForm()) {
+      //Show error if invalid on edit
+      this.formInvalid = true;
+    } else{
+      this.formInvalid = false;
+      this.edit = !this.edit;
+      if(!this.edit) {
+        this.saveData();
+      }
+    }
   }
 
 }

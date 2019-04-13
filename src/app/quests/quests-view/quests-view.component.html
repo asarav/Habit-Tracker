@@ -13,6 +13,6 @@
     </div>
   </div>
   <div class="row button-row pull-right">
-    <button class="btn btn-primary btn-sm">{{ 'Edit' }}</button>
+    <button class="btn btn-primary btn-sm" (click)="toggleEdit()">{{ edit ? 'Done' : 'Edit' }}</button>
   </div>
 </div>
